@@ -14,6 +14,7 @@ import Anchors from '../anchors'
 import Category from '../category'
 import Preview from '../preview'
 import Search from '../search'
+import SkinsEmoji from '../skins-emoji'
 
 const I18N = {
   search: 'Search',
@@ -470,6 +471,7 @@ export default class NimblePicker extends React.PureComponent {
         emojisToShowFilter,
         showPreview,
         showSkinTones,
+        alwaysShowSkinTones,
         emojiTooltip,
         include,
         exclude,
@@ -560,33 +562,57 @@ export default class NimblePicker extends React.PureComponent {
           })}
         </div>
 
-        {showPreview && (
-          <div className="emoji-mart-bar">
-            <Preview
-              ref={this.setPreviewRef}
-              data={this.data}
-              title={title}
-              emoji={emoji}
-              showSkinTones={showSkinTones}
-              emojiProps={{
-                native: native,
-                size: 38,
-                skin: skin,
-                set: set,
-                sheetSize: sheetSize,
-                sheetColumns: sheetColumns,
-                sheetRows: sheetRows,
-                backgroundImageFn: backgroundImageFn,
-              }}
-              skinsProps={{
-                skin: skin,
-                onChange: this.handleSkinChange,
-                skinEmoji: skinEmoji,
-              }}
-              i18n={this.i18n}
-            />
-          </div>
-        )}
+        {showPreview &&
+          !alwaysShowSkinTones && (
+            <div className="emoji-mart-bar">
+              <Preview
+                ref={this.setPreviewRef}
+                data={this.data}
+                title={title}
+                emoji={emoji}
+                showSkinTones={showSkinTones}
+                emojiProps={{
+                  native: native,
+                  size: 38,
+                  skin: skin,
+                  set: set,
+                  sheetSize: sheetSize,
+                  sheetColumns: sheetColumns,
+                  sheetRows: sheetRows,
+                  backgroundImageFn: backgroundImageFn,
+                }}
+                skinsProps={{
+                  skin: skin,
+                  onChange: this.handleSkinChange,
+                  skinEmoji: skinEmoji,
+                }}
+                i18n={this.i18n}
+              />
+            </div>
+          )}
+
+        {alwaysShowSkinTones &&
+          !showPreview && (
+            <div className="emoji-mart-bar emoji-mart-skin-tones">
+              <div className="emoji-mart-preview-skins">
+                <SkinsEmoji
+                  alwaysOpen
+                  skin={skin}
+                  emojiProps={{
+                    backgroundImageFn: backgroundImageFn,
+                    native: native,
+                    set: set,
+                    sheetSize: sheetSize,
+                    size: 20,
+                  }}
+                  data={this.data}
+                  skinEmoji={skinEmoji}
+                  i18n={this.i18n}
+                  onChange={this.handleSkinChange}
+                />
+              </div>
+            </div>
+          )}
       </div>
     )
   }

@@ -9,11 +9,22 @@ export default class SkinsEmoji extends Skins {
     super(props)
 
     this.handleClick = this.handleClick.bind(this)
+
+    this.onClick = this.onClick.bind(this)
+  }
+
+  onClick(e) {
+    if (!this.props.alwaysOpen) {
+      return this.handleClick(e)
+    }
+
+    const skin = parseInt(e.currentTarget.getAttribute('data-skin'))
+    this.props.onChange(skin)
   }
 
   render() {
-    const { skin, emojiProps, data, skinEmoji, i18n } = this.props
-    const { opened } = this.state
+    const { skin, emojiProps, data, skinEmoji, i18n, alwaysOpen } = this.props
+    const opened = alwaysOpen ? true : this.state.opened
     const skinToneNodes = []
 
     for (let skinTone = 1; skinTone <= 6; skinTone++) {
@@ -26,7 +37,7 @@ export default class SkinsEmoji extends Skins {
           }`}
         >
           <span
-            onClick={this.handleClick}
+            onClick={this.onClick}
             data-skin={skinTone}
             className={`emoji-mart-skin-tone-${skinTone}`}
           >
@@ -38,7 +49,7 @@ export default class SkinsEmoji extends Skins {
               native: emojiProps.native,
               set: emojiProps.set,
               sheetSize: emojiProps.sheetSize,
-              size: 23,
+              size: emojiProps.size || 23,
             })}
           </span>
         </span>,
@@ -49,9 +60,11 @@ export default class SkinsEmoji extends Skins {
       <div
         className={`emoji-mart-skin-swatches custom${opened ? ' opened' : ''}`}
       >
-        <div className={`emoji-mart-skin-text${opened ? ' opened' : ''}`}>
-          {i18n.skintext}
-        </div>
+        {!alwaysOpen && (
+          <div className={`emoji-mart-skin-text${opened ? ' opened' : ''}`}>
+            {i18n.skintext}
+          </div>
+        )}
         {skinToneNodes}
       </div>
     )
@@ -65,6 +78,7 @@ SkinsEmoji.propTypes = {
   skinTone: PropTypes.number,
   skinEmoji: PropTypes.string.isRequired,
   i18n: PropTypes.object,
+  alwaysOpen: PropTypes.bool,
 }
 
 SkinsEmoji.defaultProps = {
