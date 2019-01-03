@@ -49,8 +49,8 @@ export default class Search extends React.PureComponent {
     this.search('')
   }
 
-  handleChange() {
-    this.search(this.input.value)
+  handleChange(e) {
+    this.search(this.input ? this.input.value : e.target.value)
   }
 
   handleKeyUp(e) {
@@ -64,26 +64,31 @@ export default class Search extends React.PureComponent {
   }
 
   render() {
-    var { i18n, autoFocus } = this.props
+    var { i18n, autoFocus, children } = this.props
     var { icon, isSearching } = this.state
 
     return (
       <div className="emoji-mart-search">
-        <input
-          ref={this.setRef}
-          type="text"
-          onChange={this.handleChange}
-          placeholder={i18n.search}
-          autoFocus={autoFocus}
-        />
-        <button
-          className="emoji-mart-search-icon"
-          onClick={this.clear}
-          onKeyUp={this.handleKeyUp}
-          disabled={!isSearching}
-        >
-          {icon()}
-        </button>
+        {children && children(this.handleChange)}
+        {!children && (
+          <span>
+            <input
+              ref={this.setRef}
+              type="text"
+              onChange={this.handleChange}
+              placeholder={i18n.search}
+              autoFocus={autoFocus}
+            />
+            <button
+              className="emoji-mart-search-icon"
+              onClick={this.clear}
+              onKeyUp={this.handleKeyUp}
+              disabled={!isSearching}
+            >
+              {icon()}
+            </button>
+          </span>
+        )}
       </div>
     )
   }

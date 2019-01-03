@@ -480,6 +480,7 @@ export default class NimblePicker extends React.PureComponent {
         skinEmoji,
         notFound,
         notFoundEmoji,
+        search,
       } = this.props,
       { skin } = this.state,
       width = perLine * (emojiSize + 12) + 12 + 2 + measureScrollbar()
@@ -512,7 +513,9 @@ export default class NimblePicker extends React.PureComponent {
           exclude={exclude}
           custom={this.CUSTOM_CATEGORY.emojis}
           autoFocus={autoFocus}
-        />
+        >
+          {search}
+        </Search>
 
         <div
           ref={this.setScrollRef}

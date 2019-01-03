@@ -80,6 +80,7 @@ const PickerPropTypes = {
   notFound: PropTypes.func,
   notFoundEmoji: PropTypes.string,
   icons: PropTypes.object,
+  search: PropTypes.func,
 }
 
 const PickerDefaultProps = {
