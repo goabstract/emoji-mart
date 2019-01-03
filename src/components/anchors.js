@@ -49,7 +49,7 @@ export default class Anchors extends React.PureComponent {
               style={{ color: isSelected ? color : null }}
             >
               <div className="emoji-mart-anchor-icon">
-                {icons.categories[id]()}
+                {icons.categories[id](isSelected)}
               </div>
               <span
                 className="emoji-mart-anchor-bar"
