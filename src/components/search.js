@@ -17,6 +17,7 @@ export default class Search extends React.PureComponent {
     this.setRef = this.setRef.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.clear = this.clear.bind(this)
+    this.focus = this.focus.bind(this)
     this.handleKeyUp = this.handleKeyUp.bind(this)
   }
 
@@ -49,6 +50,10 @@ export default class Search extends React.PureComponent {
     this.search('')
   }
 
+  focus() {
+    if (this.input) this.input.focus()
+  }
+
   handleChange(e) {
     this.search(this.input ? this.input.value : e.target.value)
   }
@@ -69,7 +74,7 @@ export default class Search extends React.PureComponent {
 
     return (
       <div className="emoji-mart-search">
-        {children && children(this.handleChange)}
+        {children && children(this.handleChange, this.setRef)}
         {!children && (
           <span>
             <input
