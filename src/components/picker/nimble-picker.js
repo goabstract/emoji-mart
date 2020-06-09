@@ -594,8 +594,6 @@ export default class NimblePicker extends React.PureComponent {
                   skinEmoji: skinEmoji,
                 }}
                 i18n={this.i18n}
-                showAddCustomEmojiButton={showAddCustomEmojiButton}
-                onAddCustomEmoji={onAddCustomEmoji}
               />
             </div>
           )}
@@ -603,6 +601,11 @@ export default class NimblePicker extends React.PureComponent {
         {alwaysShowSkinTones &&
           !showPreview && (
             <div className="emoji-mart-bar emoji-mart-skin-tones">
+              {showAddCustomEmojiButton && 
+                <div className="emoji-mart-skin-tones-add-emoji">
+                  <span className="emoji-mart-skin-tones-add-emoji-button" onClick={onAddCustomEmoji}>Add Emoji</span>
+                </div>
+              }
               <div className="emoji-mart-preview-skins">
                 <SkinsEmoji
                   alwaysOpen

@@ -48,8 +48,6 @@ storiesOf('Picker', module)
       color={color('Highlight color', '#ae65c5')}
       showPreview={boolean('Show preview', true)}
       showSkinTones={boolean('Show skin tones', true)}
-      showAddCustomEmojiButton={boolean('Add Emoji Button', false)}
-      onAddCustomEmoji={action('added custom emoji')}
       custom={CUSTOM_EMOJIS}
     />
   ))
@@ -175,6 +173,25 @@ storiesOf('Picker', module)
       native={boolean('Unicode', true)}
       emojiSize={24}
       skinEmoji={text('Skin Preview Icon', 'v')}
+    />
+  ))
+
+  .add('Always show skin tones', () => (
+    <Picker
+      title=""
+      emoji=""
+      color="#0075e3"
+      perLine={9}
+      emojiSize={24}
+      skinEmoji={text('Skin Preview Icon', 'hand')}
+      native={boolean('Unicode', true)}
+      autoFocus={true}
+      alwaysShowSkinTones
+      showPreview={false}
+      onSelect={action('selected')}
+      custom={CUSTOM_EMOJIS}
+      showAddCustomEmojiButton={boolean('Add Emoji Button', true)}
+      onAddCustomEmoji={action('added custom emoji')}
     />
   ))
 

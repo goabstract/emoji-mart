@@ -23,8 +23,6 @@ export default class Preview extends React.PureComponent {
         title,
         emoji: idleEmoji,
         i18n,
-        showAddCustomEmojiButton,
-        onAddCustomEmoji
       } = this.props
 
     if (emoji) {
@@ -85,12 +83,6 @@ export default class Preview extends React.PureComponent {
             <span className="emoji-mart-title-label">{title}</span>
           </div>
 
-          {showAddCustomEmojiButton && 
-            <div className="emoji-mart-preview-add-custom-emoji-button">
-              <span className="emoji-mart-add-emoji-button" onClick={onAddCustomEmoji}>Add Emoji</span>
-            </div>
-          }
-
           {showSkinTones && (
             <div
               className={`emoji-mart-preview-skins${skinsProps.skinEmoji ? ' custom' : ''}`}
@@ -125,13 +117,9 @@ Preview.propTypes = {
   emoji: PropTypes.string.isRequired,
   emojiProps: PropTypes.object.isRequired,
   skinsProps: PropTypes.object.isRequired,
-  showAddCustomEmojiButton: PropTypes.bool,
-  onAddCustomEmoji: PropTypes.func
 }
 
 Preview.defaultProps = {
   showSkinTones: true,
   onChange: () => {},
-  showAddCustomEmojiButton: false,
-  onAddCustomEmoji: () => {}
 }
