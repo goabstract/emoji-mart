@@ -342,6 +342,28 @@
   opacity: .75;
 }
 
+.emoji-mart-preview-add-custom-emoji-button {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.emoji-mart-add-emoji-button {
+  background-color: #f4f4f4;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  cursor: default;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  transition: background-color .1s ease-in-out;
+}
+
+.emoji-mart-add-emoji-button:hover {
+  background-color: #eee;
+}
+
 .emoji-mart-skin-text.opened {
   display: inline-block;
   vertical-align: middle;

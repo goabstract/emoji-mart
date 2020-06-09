@@ -48,6 +48,8 @@ storiesOf('Picker', module)
       color={color('Highlight color', '#ae65c5')}
       showPreview={boolean('Show preview', true)}
       showSkinTones={boolean('Show skin tones', true)}
+      showAddCustomEmojiButton={boolean('Add Emoji Button', false)}
+      onAddCustomEmoji={action('added custom emoji')}
       custom={CUSTOM_EMOJIS}
     />
   ))

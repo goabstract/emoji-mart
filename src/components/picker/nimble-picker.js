@@ -483,6 +483,8 @@ export default class NimblePicker extends React.PureComponent {
         notFound,
         notFoundEmoji,
         search,
+        showAddCustomEmojiButton,
+        onAddCustomEmoji,
       } = this.props,
       { skin } = this.state,
       width = perLine * (emojiSize + 12) + 12 + 2 + measureScrollbar()
@@ -592,6 +594,8 @@ export default class NimblePicker extends React.PureComponent {
                   skinEmoji: skinEmoji,
                 }}
                 i18n={this.i18n}
+                showAddCustomEmojiButton={showAddCustomEmojiButton}
+                onAddCustomEmoji={onAddCustomEmoji}
               />
             </div>
           )}
