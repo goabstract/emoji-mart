@@ -85,7 +85,9 @@ export default class Preview extends React.PureComponent {
 
           {showSkinTones && (
             <div
-              className={`emoji-mart-preview-skins${skinsProps.skinEmoji ? ' custom' : ''}`}
+              className={`emoji-mart-preview-skins${
+                skinsProps.skinEmoji ? ' custom' : ''
+              }`}
             > 
               {skinsProps.skinEmoji ? (
                 <SkinsEmoji
