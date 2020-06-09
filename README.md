@@ -56,7 +56,7 @@ import { Picker } from 'emoji-mart'
 | **icons** | | `{}` | [Custom icons](#custom-icons) |
 | **alwaysShowSkinTones** | | `false` | Always display skin tones. `showPreview` should be set to `false` when enabled.
 | **showAddCustomEmojiButton** | | `false` | Display `Add Emoji` button. `alwaysShowSkinTones` should be set to `true` when enabled.
-| **onAddCustomEmoji** | | | `Add Emoji` button's `onClick` fallback.
+| **onAddCustomEmoji** | | | `Add Emoji` button's `onClick` callback.
 
 #### I18n
 ```js
