@@ -30,6 +30,17 @@ const CUSTOM_EMOJIS = [
   },
 ]
 
+class CustomEmojiCTA extends React.Component {
+  render () {
+    return (
+      <div className="emoji-mart-skin-tones-add-emoji">
+        <span className="emoji-mart-skin-tones-add-emoji-button" onClick={action('added new custom emoji')}>Add Emoji</span>
+      </div>
+    );
+  }
+}
+
+
 storiesOf('Picker', module)
   .addDecorator(withKnobs)
   .add('Default', () => (
@@ -190,8 +201,7 @@ storiesOf('Picker', module)
       showPreview={false}
       onSelect={action('selected')}
       custom={CUSTOM_EMOJIS}
-      showAddCustomEmojiButton={boolean('Add Emoji Button', true)}
-      onAddCustomEmoji={action('added custom emoji')}
+      CustomEmojiCTA={CustomEmojiCTA}
     />
   ))
 
