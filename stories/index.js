@@ -34,7 +34,7 @@ class CustomEmojiCTA extends React.Component {
   render () {
     return (
       <div className="emoji-mart-skin-tones-add-emoji">
-        <span className="emoji-mart-skin-tones-add-emoji-button" onClick={action('added new custom emoji')}>Add Emoji</span>
+        <button onClick={action('added new custom emoji')}>Add Emoji</button>
       </div>
     );
   }
