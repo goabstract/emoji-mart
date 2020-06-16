@@ -30,6 +30,17 @@ const CUSTOM_EMOJIS = [
   },
 ]
 
+class CustomEmojiCTA extends React.Component {
+  render () {
+    return (
+      <div className="emoji-mart-skin-tones-add-emoji">
+        <button onClick={action('added new custom emoji')}>Add Emoji</button>
+      </div>
+    );
+  }
+}
+
+
 storiesOf('Picker', module)
   .addDecorator(withKnobs)
   .add('Default', () => (
@@ -173,6 +184,24 @@ storiesOf('Picker', module)
       native={boolean('Unicode', true)}
       emojiSize={24}
       skinEmoji={text('Skin Preview Icon', 'v')}
+    />
+  ))
+
+  .add('Always show skin tones', () => (
+    <Picker
+      title=""
+      emoji=""
+      color="#0075e3"
+      perLine={9}
+      emojiSize={24}
+      skinEmoji={text('Skin Preview Icon', 'hand')}
+      native={boolean('Unicode', true)}
+      autoFocus={true}
+      alwaysShowSkinTones
+      showPreview={false}
+      onSelect={action('selected')}
+      custom={CUSTOM_EMOJIS}
+      CustomEmojiCTA={CustomEmojiCTA}
     />
   ))
 

@@ -81,6 +81,7 @@ const PickerPropTypes = {
   notFoundEmoji: PropTypes.string,
   icons: PropTypes.object,
   search: PropTypes.func,
+  CustomEmojiCTA: PropTypes.element
 }
 
 const PickerDefaultProps = {
